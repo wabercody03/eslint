@@ -679,7 +679,7 @@ describe("FlatESLint", () => {
             assert.strictEqual(results[0].suppressedMessages.length, 0);
         });
 
-        it("should report zero messages when given a config file and a valid file", async () => {
+        it.only("should report zero messages when given a config file and a valid file", async () => {
             eslint = new FlatESLint({
                 cwd: originalDir,
                 overrideConfigFile: "eslint.config.js"
@@ -4085,14 +4085,7 @@ describe("FlatESLint", () => {
             });
         });
 
-
-        /*
-         * These tests fail due to a bug in fast-flob that doesn't allow
-         * negated patterns inside of ignores. These tests won't work until
-         * this bug is fixed:
-         * https://github.com/mrmlnc/fast-glob/issues/356
-         */
-        xdescribe("ignorePatterns can unignore '/node_modules/foo'.", () => {
+        describe("ignorePatterns can unignore '/node_modules/foo'.", () => {
 
             const { prepare, cleanup, getPath } = createCustomTeardown({
                 cwd: root,
